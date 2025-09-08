@@ -6,7 +6,7 @@
 using namespace std;
 
 // Define TaylorTerm struct
-struct TaylorTerm {
+struct TaylorTerm { 
     int order;
     double coeff;
     double value;

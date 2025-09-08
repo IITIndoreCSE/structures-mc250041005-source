@@ -6,7 +6,7 @@
 using namespace std;
 
 // Define Point struct
-struct Point {
+struct Point { 
     double x;
     double y;
 };

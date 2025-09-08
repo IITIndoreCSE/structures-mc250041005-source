@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
         cerr << "Error opening " << argv[1] << endl;
         return 1;
     }
-
+ 
     int num_sensors;
     input >> num_sensors;
 

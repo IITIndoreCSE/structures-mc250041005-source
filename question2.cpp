@@ -7,7 +7,7 @@ using namespace std;
 // Define the Rectangle struct
 struct Rectangle {
     double width;
-    double height;
+    double height; 
     double thickness;
     double density;
     char material[100];

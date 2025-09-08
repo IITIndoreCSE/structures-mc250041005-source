@@ -7,10 +7,10 @@ using namespace std;
 // Define the Rectangle struct
 struct Rectangle {
     double width;
-    double height; 
+    double height;
     double thickness;
     double density;
-    char material[100]; // material is fixed-size array (can be improved with std::string)
+    char material[100];
 };
 
 // Output function to print plate details
@@ -38,11 +38,7 @@ int main(int argc, char* argv[]) {
 
     int num_plates;
     input >> num_plates;
-    if (num_plates > 10) {
-        cerr << "Number of plates exceeds maximum limit of 10!" << endl;
-        return 1; // Exit if the number of plates exceeds the allowed maximum
-    }
-    input.ignore(); // skip newline after number of plates
+    input.ignore(); // skip newline after number
 
     const int MAX_PLATES = 10;
 
@@ -57,19 +53,13 @@ int main(int argc, char* argv[]) {
         input >> plates[i].density;
         input.ignore();  // Skip the newline after density
         input.getline(plates[i].material, 100);  // Read the material name
-
-        // Error handling in case input values are incorrect
-        if (input.fail()) {
-            cerr << "Error reading data for plate " << i + 1 << endl;
-            return 1;
-        }
     }
 
     // Compute mass for each plate and call print_plate
     for (int i = 0; i < num_plates; i++) {
         // Calculate mass: mass = width * height * thickness * density
         double mass = plates[i].width * plates[i].height * plates[i].thickness * plates[i].density;
-        print_plate(i + 1, plates[i].width, plates[i].height, plates[i].density, mass, plates[i].material);
+        print_plate(i, plates[i].width, plates[i].height, plates[i].density, mass, plates[i].material);
     }
 
     return 0;

@@ -20,7 +20,7 @@ void print_point_rotation(double x_before, double y_before,
 {
 cout << "Before rotation: (x=" << x_before << ", y=" << y_before << ")\n";
     cout << "After rotation (θ=" << theta << " rad): "
-         << "(x=" << x_before << ", y=" << y_after << ")\n";
+         << "(x=" << (int)(x_before) << ", y=" << (int)(y_after) << ")\n";
 }
     // Print the original point and rotated point
     cout << "Before rotation: (x=" << x_before << ", y=" << y_before << ")\n";

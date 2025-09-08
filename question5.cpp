@@ -10,7 +10,7 @@ struct Sensor {
     double temperature;
     double voltage;
     char status[20]; // Use a character array for status (string)
-};
+}; 
 
 // Function to print details of a sensor
 void print_sensor(int index, int id, double temperature, double voltage, const char* status) {

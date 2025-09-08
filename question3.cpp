@@ -1,41 +1,32 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
-#include <iomanip>
+#include <iomanip>  // For setting precision
 
 using namespace std;
-// TODO: Define Point struct if not given
-// struct Point {
-// };
 
+// Define the Point struct to hold coordinates (x, y)
 struct Point {
     double x;
     double y;
 };
 
-
-string format_number(double v) {
-   
-    double rounded = round(v * 1e6) / 1e6;  
-    if (fabs(rounded - round(rounded)) < 1e-6) {
-        // print as integer
-        return to_string((long long)llround(rounded));
-    } else {
-        
-        ostringstream oss;
-        oss << rounded;
-        return oss.str();
-    }
+// Function to round a number to a specified number of decimal places
+double round_to_zero(double value, double epsilon = 1e-6) {
+    return (fabs(value) < epsilon) ? 0.0 : value;
 }
 
 void print_point_rotation(double x_before, double y_before,
                           double theta, double x_after, double y_after) {
-    cout << "Before rotation: (x=" << format_number(x_before)
-         << ", y=" << format_number(y_before) << ")\n";
+    // Round the results to handle floating-point precision issues
+    x_after = round_to_zero(x_after);
+    y_after = round_to_zero(y_after);
 
+    // Output before and after rotation with the required precision
+    cout << "Before rotation: (x=" << fixed << setprecision(0) << x_before
+         << ", y=" << fixed << setprecision(0) << y_before << ")\n";
     cout << "After rotation (θ=" << fixed << setprecision(4) << theta << " rad): "
-         << "(x=" << format_number(x_after)
-         << ", y=" << format_number(y_after) << ")\n";
+         << "(x=" << fixed << setprecision(0) << x_after << ", y=" << fixed << setprecision(0) << y_after << ")\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -50,23 +41,24 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Point point, pivot;
+    // Declare point, pivot, and angle variables
+    Point p, pivot;
     double theta;
 
-    input >> point.x >> point.y >> theta >> pivot.x >> pivot.y;
+    // Read input values from the file
+    input >> p.x >> p.y;      // Point coordinates (x, y)
+    input >> theta;            // Rotation angle in radians
+    input >> pivot.x >> pivot.y; // Pivot point coordinates (px, py)
 
-    // Compute rotated coordinates
-    double dx = point.x - pivot.x;
-    double dy = point.y - pivot.y;
+    // Compute rotated coordinates around the pivot using the given formula
+    double x_after = pivot.x + (p.x - pivot.x) * cos(theta) - (p.y - pivot.y) * sin(theta);
+    double y_after = pivot.y + (p.x - pivot.x) * sin(theta) + (p.y - pivot.y) * cos(theta);
 
-    double x_after = pivot.x + dx * cos(theta) - dy * sin(theta);
-    double y_after = pivot.y + dx * sin(theta) + dy * cos(theta);
-
-   
-    if (fabs(x_after) < 1e-6) x_after = 0.0;
-    if (fabs(y_after) < 1e-6) y_after = 0.0;
-
-    print_point_rotation(point.x, point.y, theta, x_after, y_after);
+    // Print the rotation details using the print_point_rotation function
+    print_point_rotation(p.x, p.y, theta, x_after, y_after);
 
     return 0;
 }
+
+
+	

@@ -9,7 +9,7 @@
 using namespace std;
 
 // TODO: Define TaylorTerm struct
-// structj TaylorTerm {
+// struct TaylorTerm {
 // };
 
 struct TaylorTerm {

@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
     double x;
     int terms;
     input >> x >> terms;
-    
+   
    // TODO: Create an array of TaylorTerm
     // TaylorTerm series[terms];
     // Create an array of TaylorTerm to store the terms
@@ -85,12 +85,12 @@ int main(int argc, char* argv[]) {
     series.reserve(terms);
 
     double approximation = 0.0;
-    
+   
     // TODO: Compute each Taylor term and store in array
     // for (int k = 0; k < terms; k++) {
     // }
     // Compute each Taylor term and store it in the array
-    
+   
     for (int k = 0; k < terms; ++k) {
         int order = 2 * k;
         int coeff = (k % 2 == 0) ? 1 : -1;

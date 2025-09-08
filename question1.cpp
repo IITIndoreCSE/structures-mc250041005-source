@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// TODO: Write the Book struct here
+// struct Book { ... };
 
 struct Book {
     char title[100];
@@ -53,6 +55,8 @@ int main(int argc, char* argv[]) {
         input.getline(books[i].isbn, 20);
     }
 
+    // TODO: Print books using print_book
+    // for (int i = 0; i < num_books; i++) { ... }
     // Print books using print_book
     for (int i = 0; i < num_books; i++) {
         print_book(i, books[i].title, books[i].author,

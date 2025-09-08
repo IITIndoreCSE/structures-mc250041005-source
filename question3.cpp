@@ -67,19 +67,6 @@ int main(int argc, char* argv[]) {
     if (fabs(y_after) < 1e-6) y_after = 0.0;
 
     print_point_rotation(point.x, point.y, theta, x_after, y_after);
-// TODO: Declare point, pivot, and angle variables
 
-
-    // TODO: Read input from file: x, y, theta, px, py
-
-
-    // TODO: Compute rotated coordinates around pivot
-
-
-    // TODO: Print rotated point
-    
-    
-    
-    
     return 0;
 }

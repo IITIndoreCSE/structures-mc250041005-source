@@ -1,20 +1,33 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <iomanip>  // For controlling output precision
 
 using namespace std;
 
-// Define the Point struct with x and y coordinates
+// Define Point struct
 struct Point {
-    double x, y;
+    double x;
+    double y;
 };
 
 // Function to print the point before and after rotation
 void print_point_rotation(double x_before, double y_before,
                           double theta, double x_after, double y_after) {
+    // Set precision to 4 decimal places for consistency with the example output
+    cout << fixed << setprecision(4);
+
+    // Print the original point and rotated point
     cout << "Before rotation: (x=" << x_before << ", y=" << y_before << ")\n";
     cout << "After rotation (θ=" << theta << " rad): "
          << "(x=" << x_after << ", y=" << y_after << ")\n";
+}
+
+// Function to perform rotation around a pivot point (px, py) by angle θ
+void rotate_point(double x, double y, double px, double py, double theta, double &x_rot, double &y_rot) {
+    // Apply the rotation formula
+    x_rot = px + (x - px) * cos(theta) - (y - py) * sin(theta);
+    y_rot = py + (x - px) * sin(theta) + (y - py) * cos(theta);
 }
 
 int main(int argc, char* argv[]) {
@@ -29,22 +42,18 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Declare point, pivot, and angle variables
-    Point p, pivot;
+    // Read the input values
+    double x, y, theta, px, py;
+    input >> x >> y >> theta >> px >> py;
 
-    double theta;
+    // Variables to store the rotated coordinates
+    double x_rot, y_rot;
 
-    // Read input from file: x, y, theta, px, py
-    input >> p.x >> p.y;    // Point to be rotated
-    input >> theta;          // Rotation angle in radians
-    input >> pivot.x >> pivot.y;  // Pivot point
+    // Perform the rotation
+    rotate_point(x, y, px, py, theta, x_rot, y_rot);
 
-    // Compute rotated coordinates around pivot using the rotation formula
-    double x_after = pivot.x + (p.x - pivot.x) * cos(theta) - (p.y - pivot.y) * sin(theta);
-    double y_after = pivot.y + (p.x - pivot.x) * sin(theta) + (p.y - pivot.y) * cos(theta);
-
-    // Print the point before and after rotation
-    print_point_rotation(p.x, p.y, theta, x_after, y_after);
+    // Print the results
+    print_point_rotation(x, y, theta, x_rot, y_rot);
 
     return 0;
 }

@@ -12,6 +12,7 @@ struct Book {
     char author[100];
     int year;
     int pages;
+   char isbn[20]
  
 
 

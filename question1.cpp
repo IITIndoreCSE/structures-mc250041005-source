@@ -11,7 +11,7 @@ struct Book {
     int year;
     int pages;
     char isbn[20];
-};
+}; 
 
 // Output function to print book details
 void print_book(int index, const char* title, const char* author,

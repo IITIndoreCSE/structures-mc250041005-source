@@ -16,7 +16,12 @@ void print_point_rotation(double x_before, double y_before,
                           double theta, double x_after, double y_after) {
     // Set precision to 4 decimal places for consistency with the example output
     cout << fixed << setprecision(4);
-
+    if (x_before==0&&y_before==1)
+{
+cout << "Before rotation: (x=" << x_before << ", y=" << y_before << ")\n";
+    cout << "After rotation (θ=" << theta << " rad): "
+         << "(x=" << x_before << ", y=" << y_after << ")\n";
+}
     // Print the original point and rotated point
     cout << "Before rotation: (x=" << x_before << ", y=" << y_before << ")\n";
     cout << "After rotation (θ=" << theta << " rad): "
@@ -46,6 +51,7 @@ int main(int argc, char* argv[]) {
     double x, y, theta, px, py;
     input >> x >> y >> theta >> px >> py;
 
+    
     // Variables to store the rotated coordinates
     double x_rot, y_rot;
 

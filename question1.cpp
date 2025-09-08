@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// Define the Book struct with fields for bibliographic data
+
 struct Book {
     char title[100];
     char author[100];
